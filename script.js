@@ -17,8 +17,10 @@ let currentLetter;
 let currentLetterIndex = 0;
 let currentWordRow = 0;
 
+const wordList = ["Apple","Beach","Brain", "Bread","Brush",,"Chest","Chair","Chord","Click","Clock","Cloud","Dance","Diary","Drink","Earth","Flute","Fruit","Ghost","Grape","Green","Happy","Heart","House","Juice","Light","Money","Music","Party","Pizza","Plant","Radio","River","Salad","Sheep","Shoes","Smile","Snack","Snake","Spice","Spoon","Storm","Table","Toast","Tiger","Train","Water","Whale","Wheel","Woman","World","Write","Youth"]
+
 let wordToCheck = "";
-let word = "TUNAY";
+let word = "";
 
 
 // let options = {
@@ -40,6 +42,11 @@ let word = "TUNAY";
 //         }); 
        
 
+function chooseWord(){
+    let randomWordIndex = Math.floor(Math.random()*wordList.length);
+    word = wordList[randomWordIndex].toUpperCase(); 
+    console.log(word)
+}
 
 key.forEach((key)=>{
     key.addEventListener("click", ()=>{
@@ -144,7 +151,10 @@ function resetGame(){
     currentWordRow = 0;
 
     resetGameButton.style.display = "none";
+    chooseWord();
 }
+
+chooseWord();
 
 resetGameButton.addEventListener("click", resetGame)
 deleteKey.addEventListener("click", deleteLetter)
